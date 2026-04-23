@@ -10,6 +10,28 @@ const UserUpdate = () => {
         const name = e.target.name.value;
         const email = e.target.email.value;
         console.log(name, email);
+
+        const updateUser = {name, email}
+
+
+
+        // send data to the server
+        fetch(`http://localhost:3000/users/${user._id}`, {
+            method: 'PATCH',
+            headers: {
+                headers: {
+                    'content-type': 'appliction/json'
+                },
+                body: JSON.stringify(updateUser)
+            }
+
+        })
+        .then(res => res.json())
+        .then(data => {
+            if(data.modifiedCount){
+                alert('user info updated') ;
+            }
+        })
     }
   return (
     <div>
