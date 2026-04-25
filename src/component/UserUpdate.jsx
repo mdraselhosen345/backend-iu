@@ -17,13 +17,13 @@ const UserUpdate = () => {
 
         // send data to the server
         fetch(`http://localhost:3000/users/${user._id}`, {
-            method: 'PATCH',
-            headers: {
+                method: 'PATCH',
+
                 headers: {
-                    'content-type': 'appliction/json'
+                    'content-type': 'application/json'
                 },
                 body: JSON.stringify(updateUser)
-            }
+        
 
         })
         .then(res => res.json())
@@ -39,7 +39,7 @@ const UserUpdate = () => {
       <form onSubmit={handleUpdateUser}>
         <input type="text" name="name" id="" defaultValue={user.name}/>
         <br />
-        <input type="email" name="email" id="" />
+        <input type="email" name="email" id="" defaultChecked={user.email}/>
         <br />
         <input type="submit" value="Update user"/>
       </form>
